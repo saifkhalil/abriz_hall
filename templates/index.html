@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            Hello
+        </h1>
+        <p class="subtitle">
+            Website with <strong>Abriz Hall</strong>!
+        </p>
+    </div>
+    <section class="section">
+        <div class="container">
+
+            <table id="products" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+                style="width:100%">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Product image</th>
+                        <th>Product Name</th>
+                        <th>Product Category</th>
+                        <th>Product Price</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <th>{{product.id}}</th>
+                        <th><img src="data:image/png;base64,{{product.image_1920}}"></th>
+                        <th>{{product.name}}</th>
+                        <th>{{product.categ_id}}</th>
+                        <th>{{product.list_price}}</th>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bm/dt-1.11.5/datatables.min.css" />
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/dt-1.11.5/datatables.min.js"></script>
+
+{% endblock %}
