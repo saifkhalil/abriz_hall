@@ -15,7 +15,6 @@ def index(request):
     common_proxy = xmlrpc.client.ServerProxy(url+'common',allow_none=True,verbose=False, use_datetime=True,context=ssl._create_unverified_context())
     uid = common_proxy.login(DB,USER,api_key)
     models = xmlrpc.client.ServerProxy(url+'object',allow_none=True,verbose=False, use_datetime=True,context=ssl._create_unverified_context())
-    ids = models.execute_kw(DB, uid, api_key, 'product.template', 'search', [[['categ_id', '=', 'main']]],{'limit': 10})
     Search_and_read = models.execute_kw(DB, uid, api_key, 'product.template', 'search_read', [[['categ_id', '=', 'main']]], {'fields': ['name', 'categ_id','list_price','image_1920'], 'limit': 5})
     context = {
         "products": Search_and_read
